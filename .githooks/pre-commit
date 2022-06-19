@@ -1,0 +1,11 @@
+#!/bin/sh
+
+CHANGELOG="CHANGELOG.md"
+CHANGELOG_UPDATED=$(git status | grep ${CHANGELOG})
+
+if [[ -n ${CHANGELOG_UPDATED} ]]; then
+	exit 0
+else
+	echo "Every commit requires update in ${CHANGELOG}."
+	exit 1
+fi
